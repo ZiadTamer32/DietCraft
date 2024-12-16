@@ -1,12 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { FaSignInAlt } from "react-icons/fa";
+import { FaUserAlt } from "react-icons/fa";
 import { RiCloseLargeFill } from "react-icons/ri";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 
-function NavBar() {
+function NavBar({ session }) {
   const pathname = usePathname();
   const [isMenuOpen, setMenuOpen] = useState(false);
 
@@ -20,7 +20,7 @@ function NavBar() {
     setMenuOpen(false);
   }
   return (
-    <nav className="bg-[#095c43]">
+    <nav>
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link
           href="/"
@@ -31,13 +31,27 @@ function NavBar() {
           </span>
         </Link>
         <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-          <Link
-            href="#"
-            className="sm:flex hidden items-center gap-2 btn-grad px-3 py-2"
-          >
-            <FaSignInAlt />
-            SignUp
-          </Link>
+          {session?.user?.image ? (
+            <Link
+              href="/account"
+              className="max-md:hidden flex items-center text-white gap-2 px-3 py-2"
+            >
+              <img
+                src={session.user.image}
+                alt={session.user.name}
+                className="rounded-full w-10 h-10"
+              />
+              Your Profile
+            </Link>
+          ) : (
+            <Link
+              href="/account"
+              className="max-md:hidden flex items-center justify-center text-white gap-2 px-3"
+            >
+              <FaUserAlt className="w-5 h-5" />
+              Guest Area
+            </Link>
+          )}
           <button
             onClick={() => setMenuOpen(!isMenuOpen)}
             data-collapse-toggle="navbar-sticky"
@@ -69,21 +83,21 @@ function NavBar() {
           </button>
         </div>
         <div
-          className={`${
-            isMenuOpen ? "block" : "hidden"
-          } items-center justify-between w-full md:flex md:w-auto md:order-1`}
+          className={`items-center justify-between w-full md:flex md:w-auto md:order-1 ${
+            isMenuOpen
+              ? "max-md:max-h-screen max-md:opacity-100"
+              : "max-md:max-h-0 max-md:opacity-0"
+          } max-md:overflow-hidden max-md:transition-all max-md:duration-500 max-md:ease-in-out`}
           id="navbar-sticky"
         >
-          <ul className="flex flex-col md:flex-row gap-4 font-medium sm:p-0 p-4 sm:mt-0 mt-5 max-sm:border max-sm:border-gray-500  max-sm:bg-[#074a36] rounded-lg">
+          <ul className="flex flex-col md:flex-row gap-4 font-medium max-md:p-4  max-md:mt-5 max-md:border max-md:border-gray-500  max-md:bg-[#0e1419] rounded-lg">
             {menu.map((item) => (
               <li key={item.id}>
                 <Link
                   onClick={() => handleClick()}
                   href={item.href}
                   className={`block text-white py-[0.55rem] px-3 sm:mb-0 mb-2 ${
-                    pathname === item.href
-                      ? "bg-[#053728] sm:rounded-full rounded-lg"
-                      : ""
+                    pathname === item.href ? "bg-[#080b0e] rounded-lg" : ""
                   } `}
                   aria-current={pathname === item.href ? "page" : undefined}
                 >
@@ -91,13 +105,29 @@ function NavBar() {
                 </Link>
               </li>
             ))}
-            <Link
-              href="#"
-              className="max-sm:flex hidden items-center justify-center gap-2 btn-grad px-3 py-2"
-            >
-              <FaSignInAlt />
-              SignUp
-            </Link>
+            {session?.user?.image ? (
+              <Link
+                href="/account"
+                className="max-md:flex hidden items-center  gap-2  px-3 py-2"
+                onClick={() => handleClick()}
+              >
+                <img
+                  src={session.user.image}
+                  alt={session.user.name}
+                  className="rounded-full w-10 h-10"
+                />
+                Your Profile
+              </Link>
+            ) : (
+              <Link
+                href="/account"
+                className="max-md:flex hidden items-center gap-2 px-3 py-2"
+                onClick={() => handleClick()}
+              >
+                <FaUserAlt />
+                Guest Area
+              </Link>
+            )}
           </ul>
         </div>
       </div>

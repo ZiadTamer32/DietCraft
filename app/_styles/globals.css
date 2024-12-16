@@ -33,12 +33,7 @@
 }
 
 .btn-grad {
-  background-image: linear-gradient(
-    to right,
-    #15803d 0%,
-    #449964 51%,
-    #15803d 100%
-  );
+  background-color: #080b0e;
 }
 .btn-grad {
   transition: 0.5s;
@@ -48,7 +43,12 @@
 }
 
 .btn-grad:hover {
-  background-position: right center; /* change the direction of the change here */
-  color: #fff;
-  text-decoration: none;
+  background-color: #010202;
+}
+
+.home-bg {
+  background-image: url("../../public/png-img1-removebg-preview.png");
+}
+.box-shadow {
+  box-shadow: 0px 0px 24px black;
 }
