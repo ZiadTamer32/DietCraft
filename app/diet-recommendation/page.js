@@ -1,6 +1,6 @@
 export default async function Page() {
   return (
-    <div className="block box-shadow my-7 max-w-[850px] mx-auto border border-slate-200">
+    <div className="block max-lg:box-shadow my-7 max-w-[850px] mx-auto sm:border sm:border-slate-200">
       <form className="p-7">
         <div className="grid gap-6 mb-6 md:grid-cols-2">
           <div>
@@ -163,7 +163,7 @@ export default async function Page() {
         </div>
         <button
           type="submit"
-          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+          className="btn-grad focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
         >
           Submit
         </button>

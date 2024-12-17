@@ -4,8 +4,8 @@ import SignInButtonFaceBook from "../_components/SignInButtonFaceBook";
 
 export default function Page() {
   return (
-    <div className="flex flex-col gap-8 h-screen max-w-lg mx-auto my-7 justify-center items-center border-2 border-slate-200 px-4 md:px-8">
-      <form className="w-full space-y-6">
+    <div className="flex flex-col gap-8 max-w-lg mx-auto my-3 justify-center items-center sm:border sm:border-slate-200 p-4 md:px-8">
+      <form className="w-full px-3 py-6">
         {/* Email Input */}
         <div className="relative z-0 w-full mb-6 group">
           <input
@@ -145,7 +145,7 @@ export default function Page() {
       </form>
 
       {/* Social Buttons */}
-      <div className="flex flex-col gap-4 items-center justify-center text-black mt-6">
+      <div className="flex flex-col gap-4 items-center justify-center text-black">
         <SignInButton />
         <SignInButtonFaceBook />
       </div>
