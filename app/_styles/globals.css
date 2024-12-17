@@ -33,15 +33,15 @@
 }
 
 .btn-grad {
-  background-color: #080b0e;
-}
-.btn-grad {
+  background-color: #095c43;
   transition: 0.5s;
   background-size: 200% auto;
-  color: white;
   border-radius: 10px;
 }
 
 .btn-grad:hover {
-  background-color: #010202;
+  background-color: #052e22;
+}
+.box-shadow {
+  box-shadow: 0px 0px 10px #888b90;
 }

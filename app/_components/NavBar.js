@@ -20,7 +20,7 @@ function NavBar({ session }) {
     setMenuOpen(false);
   }
   return (
-    <nav>
+    <nav className="bg-[#095c43]">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link
           href="/"
@@ -90,14 +90,14 @@ function NavBar({ session }) {
           } max-md:overflow-hidden max-md:transition-all max-md:duration-500 max-md:ease-in-out`}
           id="navbar-sticky"
         >
-          <ul className="flex flex-col md:flex-row gap-4 font-medium max-md:p-4  max-md:mt-5 max-md:border max-md:border-gray-500  max-md:bg-[#0e1419] rounded-lg">
+          <ul className="flex flex-col md:flex-row gap-4 font-medium max-md:p-4  max-md:mt-5 max-md:border max-md:border-gray-500  max-md:bg-[#052e22] rounded-lg">
             {menu.map((item) => (
               <li key={item.id}>
                 <Link
                   onClick={() => handleClick()}
                   href={item.href}
                   className={`block text-white py-[0.55rem] px-3 sm:mb-0 mb-2 ${
-                    pathname === item.href ? "bg-[#080b0e] rounded-lg" : ""
+                    pathname === item.href ? "bg-[#031c14] rounded-lg" : ""
                   } `}
                   aria-current={pathname === item.href ? "page" : undefined}
                 >

@@ -15,10 +15,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${joesfinSans.className} bg-[#141c24] text-white min-h-screen`}
-      >
-        <div className="h-screen">
+      <body className={`${joesfinSans.className}  text-white`}>
+        <div>
           <Navigation />
           <main className="w-full">{children}</main>
         </div>
