@@ -1,5 +1,6 @@
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
+import Facebook from "next-auth/providers/facebook";
 import { createGuest, getGuest } from "./action";
 
 const authConfig = {
@@ -7,6 +8,10 @@ const authConfig = {
     Google({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET
+    }),
+    Facebook({
+      clientId: process.env.AUTH_FACEBOOK_ID,
+      clientSecret: process.env.AUTH_FACEBOOK_SECRET
     })
   ],
   callbacks: {
@@ -28,7 +33,9 @@ const authConfig = {
     },
     async session({ session, user }) {
       const guest = await getGuest(session.user.email);
-      session.user.guestId = guest.id;
+      if (guest) {
+        session.user.guestId = guest.id;
+      }
       return session;
     }
   },
