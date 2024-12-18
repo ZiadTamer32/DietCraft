@@ -18,10 +18,10 @@ function RangeForm() {
           id="default-range"
           name="meals_per_day"
           type="range"
-          min="1"
+          min="3"
           max="5"
           value={range}
-          onChange={(e) => setRange(+e.target.value)}
+          onChange={(e) => setRange(e.target.value)}
           className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#095c43]"
         />
       </div>

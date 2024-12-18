@@ -1,5 +1,5 @@
 "use server";
-import { signIn, signOut } from "./auth";
+import { auth, signIn, signOut } from "./auth";
 import { supabase } from "./supabase";
 
 export async function guest() {
@@ -68,5 +68,33 @@ export async function getGuest(email) {
 }
 
 export async function dietSubmission(formState) {
-  console.log(formState);
+  const session = await auth();
+  const email = session?.user?.email;
+  const addGuest = {
+    age: +formState.get("age"),
+    height: +formState.get("height"),
+    weight: +formState.get("weight"),
+    numMeals: +formState.get("meals_per_day"),
+    bodyFat: +formState.get("bodyFat"),
+    gender: formState.get("gender"),
+    activity: formState.get("activity"),
+    plan: formState.get("plan"),
+    dietDuration: formState.get("duration")
+  };
+  if (email) {
+    const { error } = await supabase
+      .from("guests")
+      .update(addGuest)
+      .eq("email", email)
+      .select()
+      .single();
+    if (error) {
+      throw new Error("Diet Recommendation could not be generated");
+    }
+  } else {
+    const { error } = await supabase.from("guests").insert([addGuest]);
+    if (error) {
+      throw new Error("Diet Recommendation could not be generated");
+    }
+  }
 }

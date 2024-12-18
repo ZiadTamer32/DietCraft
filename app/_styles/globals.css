@@ -21,6 +21,19 @@
     transform: rotate(360deg);
   }
 }
+html {
+  scroll-behavior: smooth;
+}
+
+.spinner-mini {
+  margin: 0;
+  width: 20px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 2px solid white;
+  border-right-color: transparent;
+  animation: rotate 1s infinite linear;
+}
 
 .spinner {
   margin: 3.2rem auto 1.6rem;
