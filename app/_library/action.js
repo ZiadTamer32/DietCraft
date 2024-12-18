@@ -66,3 +66,7 @@ export async function getGuest(email) {
     .single();
   return data;
 }
+
+export async function dietSubmission(formState) {
+  console.log(formState);
+}
