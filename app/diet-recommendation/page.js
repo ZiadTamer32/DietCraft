@@ -8,7 +8,7 @@ export default function Page() {
         <h1 className="font-bold lg:text-4xl text-xl mb-5">
           Automatic Diet Recommendation
         </h1>
-        <h3 className="font-semibold text-lg sm:mb-5 mb-2">
+        <h3 className="font-semibold sm:text-lg text-md sm:mb-5 mb-2 ">
           Get personalized diet recommendations based on your goals and
           lifestyle
         </h3>
