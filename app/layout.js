@@ -1,6 +1,5 @@
 import "@/app/_styles/globals.css";
 import { Josefin_Sans } from "next/font/google";
-// import NavBar from "./_components/NavBar";
 import Navigation from "./_components/Navigation";
 
 const joesfinSans = Josefin_Sans({
@@ -18,7 +17,7 @@ export default function RootLayout({ children }) {
       <body className={`${joesfinSans.className}  text-white`}>
         <div>
           <Navigation />
-          <main className="w-full ">{children}</main>
+          <main className="w-full">{children}</main>
         </div>
       </body>
     </html>

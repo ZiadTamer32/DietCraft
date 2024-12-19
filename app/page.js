@@ -5,10 +5,8 @@ export default async function Page() {
   return (
     <main>
       <div className="relative flex flex-col image items-center justify-center h-screen px-4 sm:px-8 lg:px-16 text-[#313121]">
-        {/* <Image src={bg} fill className="object-cover" quality={100} alt="bg" /> */}
-        {/* <div className="absolute inset-0 bg-black opacity-20"></div> */}
         <div className="text-center max-w-[37.5rem] z-10">
-          <h1 className="sm:text-[2.25rem] text-2xl leading-relaxed mb-5 max-lg:drop-shadow-xl max-md:drop-shadow-md max-sm:drop-shadow-sm">
+          <h1 className="sm:text-[2.25rem] text-2xl leading-relaxed sm:mb-5 max-lg:drop-shadow-xl max-md:drop-shadow-md max-sm:drop-shadow-sm">
             Welcome to DietCraft – Your journey to a healthier lifestyle starts
             here !
           </h1>

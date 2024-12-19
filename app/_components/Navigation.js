@@ -4,7 +4,7 @@ import NavBar from "./NavBar";
 async function Navigation() {
   const session = await auth();
   return (
-    <div className="border-b border-primary-900">
+    <div>
       <NavBar session={session} />
     </div>
   );

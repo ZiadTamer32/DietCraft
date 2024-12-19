@@ -1,11 +1,11 @@
 "use client";
 import { useFormStatus } from "react-dom";
 
-function SubmitButton({ label, children, onClick }) {
+function SubmitButton({ label, children, onClick, className }) {
   const { pending } = useFormStatus();
   return (
     <button
-      className="btn-grad focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+      className={className}
       disabled={pending}
       type="submit"
       onClick={onClick}
@@ -16,3 +16,4 @@ function SubmitButton({ label, children, onClick }) {
 }
 
 export default SubmitButton;
+//  bg-[#095c43] hover:bg-[#053728] transition

@@ -42,7 +42,7 @@ const authConfig = {
     }
   },
   pages: {
-    signIn: "/login"
+    signIn: "/signup"
   }
 };
 

@@ -168,12 +168,16 @@ function DietForm() {
               required
             />
           </div>
-          <SubmitButton label={<SpinnerMini />} onClick={() => handleClick()}>
+          <SubmitButton
+            label={<SpinnerMini />}
+            onClick={() => handleClick()}
+            className="bg-[#095c43] hover:bg-[#053728] transition focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+          >
             Generate
           </SubmitButton>
         </form>
       </div>
-      {result ? <Results /> : ""}
+      {result && <Results />}
     </div>
   );
 }

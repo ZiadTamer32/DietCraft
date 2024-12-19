@@ -69,7 +69,7 @@ export async function getGuest(email) {
 
 export async function dietSubmission(formState) {
   const session = await auth();
-  const email = session?.user?.email;
+  const guestId = session?.user?.guestId;
   const addGuest = {
     age: +formState.get("age"),
     height: +formState.get("height"),
@@ -81,11 +81,11 @@ export async function dietSubmission(formState) {
     plan: formState.get("plan"),
     dietDuration: formState.get("duration")
   };
-  if (email) {
+  if (guestId) {
     const { error } = await supabase
       .from("guests")
       .update(addGuest)
-      .eq("email", email)
+      .eq("id", guestId)
       .select()
       .single();
     if (error) {
@@ -97,4 +97,11 @@ export async function dietSubmission(formState) {
       throw new Error("Diet Recommendation could not be generated");
     }
   }
+}
+
+export async function signUp() {
+  let { data, error } = await supabase.auth.signUp({
+    email: "someone@email.com",
+    password: "FbafIXUOswwAWmlUlbLW"
+  });
 }

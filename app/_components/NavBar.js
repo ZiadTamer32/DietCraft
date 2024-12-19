@@ -20,11 +20,16 @@ function NavBar({ session }) {
     setMenuOpen(false);
   }
   return (
-    <nav className="bg-[#095c43]">
+    <nav
+      className={`bg-[#095c43] ${pathname === "/login" ? "hidden" : "block"} ${
+        pathname === "/signup" ? "hidden" : "block"
+      }`}
+    >
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link
           href="/"
           className="flex items-center space-x-3 rtl:space-x-reverse"
+          onClick={() => handleClick()}
         >
           <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">
             DietCraft
