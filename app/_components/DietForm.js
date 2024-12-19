@@ -5,7 +5,7 @@ import RangeForm from "./RangeForm";
 import SubmitButton from "./SubmitButton";
 import { useEffect, useState } from "react";
 import Results from "./Results";
-function DietForm({ session, guest }) {
+function DietForm() {
   const [result, setResult] = useState(false);
 
   useEffect(() => {
@@ -18,9 +18,9 @@ function DietForm({ session, guest }) {
     setResult(true);
   }
   return (
-    <>
-      <div className="text-center text-gray-900 mt-7 px-5">
-        <h1 className="font-bold lg:text-4xl text-xl mb-5">
+    <div className="py-5">
+      <div className="text-center text-gray-900 px-5">
+        <h1 className="font-bold lg:text-4xl text-xl mb-2">
           Automatic Diet Recommendation
         </h1>
         <h3 className="font-semibold sm:text-lg text-md sm:mb-5 mb-2">
@@ -28,7 +28,7 @@ function DietForm({ session, guest }) {
           lifestyle
         </h3>
       </div>
-      <div className="block max-lg:box-shadow mb-7 max-w-[850px] mx-auto sm:border sm:border-slate-200">
+      <div className="block max-lg:box-shadow max-w-[850px] mx-auto sm:border sm:border-slate-200">
         <form action={dietSubmission} className="p-7">
           <div className="grid gap-6 mb-6 md:grid-cols-2">
             <div>
@@ -174,7 +174,7 @@ function DietForm({ session, guest }) {
         </form>
       </div>
       {result ? <Results /> : ""}
-    </>
+    </div>
   );
 }
 

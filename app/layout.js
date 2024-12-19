@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
       <body className={`${joesfinSans.className}  text-white`}>
         <div>
           <Navigation />
-          <main className="w-full">{children}</main>
+          <main className="w-full ">{children}</main>
         </div>
       </body>
     </html>

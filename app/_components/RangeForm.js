@@ -9,7 +9,7 @@ function RangeForm() {
     <div className="mb-6">
       <label
         htmlFor="default-range"
-        className="block mb-2 text-sm font-medium text-gray-900"
+        className="block text-gray-900 mb-2 text-sm font-medium"
       >
         Meals per day
       </label>
