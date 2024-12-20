@@ -1,24 +1,11 @@
-"use client";
 import Link from "next/link";
-import SubmitButton from "./SubmitButton";
 import SpinnerMini from "./SpinnerMini";
-import { useForm } from "react-hook-form";
-import SignInButton from "./SignInButton";
+import { SignUpGuest } from "../_library/action";
+import CreateAccountButton from "./CreateAccountButton";
 
-function SignUpForm() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-    watch
-  } = useForm();
-
-  const onSubmit = (data) => {
-    console.log(data);
-  };
-
+function SignUpForm({ register, handleSubmit, errors, watch }) {
   return (
-    <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit(onSubmit)}>
+    <form className="space-y-4 md:space-y-6" action={handleSubmit(SignUpGuest)}>
       <div className="grid grid-cols-2 gap-3">
         {/* First Name Input */}
         <div>
@@ -27,7 +14,9 @@ function SignUpForm() {
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
             {errors.firstName ? (
-              <p className="text-red-500 text-xs">{errors.firstName.message}</p>
+              <p className="text-red-500 text-xs text-nowrap">
+                {errors.firstName.message}
+              </p>
             ) : (
               <p>First Name</p>
             )}
@@ -49,7 +38,9 @@ function SignUpForm() {
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
             {errors.lastName ? (
-              <p className="text-red-500 text-xs">{errors.lastName.message}</p>
+              <p className="text-red-500 text-xs text-nowrap">
+                {errors.lastName.message}
+              </p>
             ) : (
               <p>Last Name</p>
             )}
@@ -72,7 +63,9 @@ function SignUpForm() {
           className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
         >
           {errors.email ? (
-            <p className="text-red-500 text-xs">{errors.email.message}</p>
+            <p className="text-red-500 text-xs text-nowrap">
+              {errors.email.message}
+            </p>
           ) : (
             <p>Your Email</p>
           )}
@@ -93,7 +86,9 @@ function SignUpForm() {
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
             {errors.password ? (
-              <p className="text-red-500 text-xs">{errors.password.message}</p>
+              <p className="text-red-500 text-xs text-nowrap">
+                {errors.password.message}
+              </p>
             ) : (
               <p>Password</p>
             )}
@@ -106,8 +101,8 @@ function SignUpForm() {
             {...register("password", {
               required: "Password is required",
               minLength: {
-                value: 4,
-                message: "Password must be at least 4 characters"
+                value: 6,
+                message: "Password must be at least 6 characters"
               },
               maxLength: {
                 value: 12,
@@ -171,12 +166,12 @@ function SignUpForm() {
       </div>
 
       {/* Submit Button */}
-      <SubmitButton
+      <CreateAccountButton
         label={<SpinnerMini />}
         className="bg-[#10151c] hover:bg-[#06080b] transition font-medium rounded-lg text-sm w-full px-5 py-2.5 flex justify-center items-center"
       >
         Create an account
-      </SubmitButton>
+      </CreateAccountButton>
     </form>
   );
 }

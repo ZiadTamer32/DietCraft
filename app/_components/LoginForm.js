@@ -1,10 +1,9 @@
 import Link from "next/link";
-import SignInButton from "./SignInButton";
-import SignInButtonFaceBook from "./SignInButtonFaceBook";
 import SubmitButton from "./SubmitButton";
 import SpinnerMini from "./SpinnerMini";
+import { login } from "../_library/action";
 
-function LoginForm() {
+async function LoginForm() {
   return (
     <section className="flex-1">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
@@ -13,7 +12,7 @@ function LoginForm() {
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
               Sign In
             </h1>
-            <form className="space-y-4 md:space-y-6" action="#">
+            <form className="space-y-4 md:space-y-6" action={login}>
               <div>
                 <label
                   htmlFor="email"

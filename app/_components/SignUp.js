@@ -1,8 +1,15 @@
+"use client";
 import Link from "next/link";
-import SignInButton from "./SignInButton";
 import SignUpForm from "./SignUpForm";
+import { useForm } from "react-hook-form";
 
 function SignUp() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    watch
+  } = useForm();
   return (
     <section className="flex-1">
       <div className=" flex flex-col items-center justify-center px-6 py-8 mx-auto md:min-h-screen lg:py-0">
@@ -11,11 +18,16 @@ function SignUp() {
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
               Create an account
             </h1>
-            <SignUpForm />
+            <SignUpForm
+              register={register}
+              handleSubmit={handleSubmit}
+              errors={errors}
+              watch={watch}
+            />
           </div>
-          <div className="flex items-center justify-center mt-4">
+          {/* <div className="flex items-center justify-center mt-4">
             <SignInButton />
-          </div>
+          </div> */}
           <div className="text-sm font-light text-gray-500 dark:text-gray-400 px-4 my-4">
             Already have an account?{" "}
             <Link

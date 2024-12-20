@@ -19,6 +19,22 @@ export default function RootLayout({ children }) {
           <Navigation />
           <main className="w-full">{children}</main>
         </div>
+        {/* <Toaster
+          position="top-center"
+          gutter={12}
+          containerStyle={{ margin: "8px" }}
+          toastOptions={{
+            success: { duration: 3000 },
+            error: { duration: 5000 },
+            style: {
+              fontSize: "18px",
+              maxWidth: "500px",
+              padding: "18px 24px",
+              backgroundColor: "var(--color-grey-0)",
+              color: "var(--color-grey-700)"
+            }
+          }}
+        /> */}
       </body>
     </html>
   );

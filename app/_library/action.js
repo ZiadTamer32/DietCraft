@@ -1,6 +1,8 @@
 "use server";
+import { redirect } from "next/navigation";
 import { auth, signIn, signOut } from "./auth";
 import { supabase } from "./supabase";
+// import { toast } from "react-hot-toast";
 
 export async function guest() {
   const { data: guests, error } = await supabase.from("guests").select("*");
@@ -99,9 +101,71 @@ export async function dietSubmission(formState) {
   }
 }
 
-export async function signUp() {
-  let { data, error } = await supabase.auth.signUp({
-    email: "someone@email.com",
-    password: "FbafIXUOswwAWmlUlbLW"
+// export default function SignUpComponent() {
+//   const { data } = useCreateGuest();
+
+//   async function SignUp({ fullName, email, password, lastName }) {
+//     let { error } = await supabase.auth.signUp({
+//       email,
+//       password,
+//       options: { data: { fullName, lastName } }
+//     });
+//     if (error) {
+//       console.error(error.message);
+//       throw new Error(error.message);
+//     }
+//     return data;
+//   }
+// }
+export async function SignUpGuest(formState) {
+  if (!formState.email || !formState.password) {
+    console.error("Please provide both email and password.");
+    return;
+  }
+  const firstName = formState.firstName;
+  const lastName = formState.lastName;
+  const { error } = await supabase.auth.signUp({
+    email: formState.email,
+    password: formState.password,
+    options: { data: { firstName, lastName } }
   });
+  if (error) {
+    console.error("Sign up failed:", error.message);
+  } else {
+    console.log("User signed up successfully");
+  }
+  redirect("/account");
+}
+
+export async function getCurrentUser() {
+  const { data: session } = await supabase.auth.getSession();
+
+  if (!session.session) return null;
+  const { data, error } = await supabase.auth.getUser();
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  return data?.user;
+}
+
+export async function login(formState) {
+  const email = formState.get("email");
+  const password = formState.get("password");
+  if (!email || !password) {
+    console.error("Email and password are required");
+    return;
+  }
+  const { error } = await supabase.auth.signInWithPassword({
+    email,
+    password
+  });
+
+  if (error) {
+    console.error("Login failed:", error.message);
+    // toast.error("Login failed: " + error.message);
+  } else {
+    console.log("User logged in successfully");
+    redirect("/account");
+  }
 }

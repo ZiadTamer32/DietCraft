@@ -40,10 +40,8 @@ const authConfig = {
       }
       return session;
     }
-  },
-  pages: {
-    signIn: "/signup"
   }
+  // pages: { signIn: "/signup" }
 };
 
 export const {
